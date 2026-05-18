@@ -5,12 +5,12 @@ import {guardarDatos, obtenerDatos} from "../../../utils/localStorage";
 
 const carritoKey = "carrito";
 
-export const agregarAlCarrito = (): ProductoCarrito[] =>{
+export const obtenerCarrito = (): ProductoCarrito[] =>{
     return(obtenerDatos<ProductoCarrito[]>(carritoKey) || [])
 }
 
 export const agregarProductoAlCarrito = (producto: Product): void => {
-    const carrito = agregarAlCarrito();
+    const carrito = obtenerCarrito();
     const productoExistente = carrito.find(
         item => item.id === producto.id
     );
@@ -27,6 +27,6 @@ export const agregarProductoAlCarrito = (producto: Product): void => {
 }
 
 export const obtenerTotalCarrito = (): number => {
-    const carrito = agregarAlCarrito();
+    const carrito = obtenerCarrito();
     return carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
 }
