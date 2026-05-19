@@ -4,6 +4,13 @@ import {products}from "../../../data/data";
 
 import {agregarProductoAlCarrito} from "../../client/home/clientCarrito";
 
+import { renderHeader } from "../../../components/header";
+
+document.body.insertAdjacentHTML(
+    "afterbegin",
+    renderHeader("Tienda")
+);
+
 const contenedorProductos = document.querySelector("#contenedor-productos") as HTMLSpanElement;
 
 if(contenedorProductos){
@@ -12,7 +19,7 @@ if(contenedorProductos){
     <div class="card-producto">
       <h3>${producto.nombre}</h3>
       <img 
-      src="../../../../public/pizza.jpg"
+      src="../../../../public/img/pizza.jpg"
       alt="${producto.nombre}">
       <p>Precio: $${producto.precio}</p>
       <button data-id="${producto.id}">Agregar al carrito</button>
