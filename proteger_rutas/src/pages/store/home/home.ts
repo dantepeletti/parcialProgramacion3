@@ -1,18 +1,24 @@
+
+
 import {products}from "../../../data/data";
 
 import {agregarProductoAlCarrito} from "../../client/home/clientCarrito";
 
-const contadorCarrito = document.querySelector("#contenedor-carrito") as HTMLSpanElement;
+const contenedorProductos = document.querySelector("#contenedor-productos") as HTMLSpanElement;
 
-if(contadorCarrito){
+if(contenedorProductos){
   products.forEach(producto => {
-    contadorCarrito.innerHTML +=` 
-    <div>
+    contenedorProductos.innerHTML +=` 
+    <div class="card-producto">
       <h3>${producto.nombre}</h3>
+      <img 
+      src="../../../../public/pizza.jpg"
+      alt="${producto.nombre}">
       <p>Precio: $${producto.precio}</p>
-      <button id="agregar-${producto.id}">Agregar al carrito</button>
+      <button data-id="${producto.id}">Agregar al carrito</button>
     </div>`;
   });
+
   const botones = document.querySelectorAll("button")
 
   botones.forEach(boton => {
