@@ -76,3 +76,8 @@ export const eliminarProducto = (id: number): void => {
 
     guardarDatos(carritoKey, carrito);
 }
+
+export const vaciarCarrito = (): void => {
+
+    guardarDatos(carritoKey, []);
+}

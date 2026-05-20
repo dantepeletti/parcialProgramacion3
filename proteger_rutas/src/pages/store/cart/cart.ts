@@ -9,23 +9,25 @@ import {
     eliminarProducto
 } from "../../client/home/clientCarrito";
 
+
 import { renderHeader } from "../../../components/header";
 document.body.insertAdjacentHTML(
     "afterbegin",
     renderHeader("Carrito")
 );
 
+import {
+    vaciarCarrito
+} from "../../client/home/clientCarrito";
 
 const contenerdor = document.querySelector("#contenedor-carrito") as HTMLDivElement;
-
-const total =  document.querySelector("#total") as HTMLParagraphElement;
 const carrito = obtenerCarrito()
 
 if(contenerdor){
     carrito.forEach(producto => {
         contenerdor.innerHTML += `
         <div class="card-carrito">
-            <h3>${producto.nombre}</h3>
+        <h3>${producto.nombre}</h3>
             <img 
             src="../../../../public/img/pizza.jpg"
             alt="${producto.nombre}">
@@ -44,11 +46,13 @@ if(contenerdor){
             </div>
         </div>`
     });
+
+    const total =  document.querySelector("#total") as HTMLParagraphElement;
     if(total){
         total.textContent = `Total: $${obtenerTotalCarrito()}`;
     }
-    const botonesSumar = document.querySelectorAll(".btn-sumar");
 
+    const botonesSumar = document.querySelectorAll(".btn-sumar");
     botonesSumar.forEach(boton => {
         boton.addEventListener("click", () => {
             const id = Number(
@@ -60,7 +64,6 @@ if(contenerdor){
     });
 
     const botonesRestar = document.querySelectorAll(".btn-restar");
-
     botonesRestar.forEach(boton => {
         boton.addEventListener("click", () => {
             const id = Number(
@@ -81,5 +84,21 @@ if(contenerdor){
             location.reload();
         });
     });
+    const botonVaciar = document.querySelector("#btn-vaciar");
+    if(botonVaciar){      
+        botonVaciar.addEventListener("click", () => {
 
+            vaciarCarrito();
+
+            location.reload();
+        });
+    }   
+    const botonFinalizar = document.querySelector("#btn-finalizar");
+    if(botonFinalizar){
+        botonFinalizar.addEventListener("click", () => {
+            alert("Compra realizada con éxito");
+            vaciarCarrito();
+            location.reload();
+        });
+    }
 }
