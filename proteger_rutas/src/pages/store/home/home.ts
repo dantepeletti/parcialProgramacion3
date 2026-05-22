@@ -1,8 +1,6 @@
 import { products } from "../../../data/data";
 import type { Product } from "../../../types/product";
-import {
-    agregarProductoAlCarrito
-} from "../../client/home/clientCarrito";
+import {agregarProductoAlCarrito} from "../../client/home/clientCarrito";
 import { renderHeader } from "../../../components/header";
 
 document.body.insertAdjacentHTML(
@@ -32,7 +30,7 @@ const renderizarProductos = (
         <div class="card-producto">
             <h3>${producto.nombre}</h3>
             <img 
-                src="../../../../public/img/pizza.jpg"
+                src="${producto.imagen}"
                 alt="${producto.nombre}"
             >
             <p>

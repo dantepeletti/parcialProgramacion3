@@ -1,6 +1,13 @@
 import type { IUser } from "../../../types/IUser";
 import type { Rol } from "../../../types/Rol";
 import { navigate } from "../../../utils/navigate";
+import { renderHeader } from "../../../components/header";
+import "../../../style.css";
+
+document.body.insertAdjacentHTML(
+    "afterbegin",
+    renderHeader("Login")
+);
 
 const form = document.getElementById("form") as HTMLFormElement;
 const inputEmail = document.getElementById("email") as HTMLInputElement;
@@ -27,4 +34,4 @@ form.addEventListener("submit", (e: SubmitEvent) => {
 
   const parseUser = JSON.stringify(user);
   localStorage.setItem("userData", parseUser);
-});
+}); 
