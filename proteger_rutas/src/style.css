@@ -243,10 +243,10 @@ body{
 #contenedor-carrito{
     display: flex;
     text-align: center;
-    align-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 25px;
     padding: 10px;
-    justify-content: center;
     margin-top: 30px;
 }
 
